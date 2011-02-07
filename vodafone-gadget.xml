@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<vodafone-gadget>
+    <info>
+        <name>Vodafone Gadget</name>
+        <version>2.0.1</version>
+        <license>GPL General Public License</license>
+        <description>Linux Vodafone SMS MMS gadget</description>
+    </info>
+
+    <author>
+        <name>Andrea Costa</name>
+        <email>nukemup@hotmail.com</email>
+        <website>http://github.com/andypc</website>
+    </author>
+
+    <graphics x_win="1186" y_win="33">
+        <width>170</width>
+        <height>280</height>
+    </graphics>
+
+    <setting proxy_on="0" proxy="" proxy_port="" remember_me="1" username="nanni273">
+    </setting>
+</vodafone-gadget>
