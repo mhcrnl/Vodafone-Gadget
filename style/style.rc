@@ -1,0 +1,36 @@
+style "tooltip"{
+	 bg[NORMAL] = "#FFFFFF"
+	 fg[NORMAL] = "#000000"
+	 fg[NORMAL] = "#000000"
+}
+
+style "default"{
+	 #GtkButton::xthickness = 0
+	 #GtkButton::ythickness = 0
+	 GtkButton::focus-padding = 0
+	 GtkButton::default-border = { 0, 0, 0, 0 }
+	 GtkButton::focus-line-width = 0
+	 GtkButton::inner-border = { 0, 0, 0, 0 }
+	 font_name = "helvetica 9"
+	 GtkComboBox::focus-padding = 0
+	 GtkComboBox::default-border = { 0, 0, 0, 0 }
+	 GtkComboBox::focus-line-width = 0
+	 GtkComboBox::inner-border = { 0, 0, 0, 0 }
+}
+
+style "my-scrolledwindow"{
+	 xthickness = 0
+	 ythickness = 0
+	 GtkScrolledWindow::scrollbars-within-bevel = 0
+	 GtkScrolledWindow::scrollbar-spacing = 0
+	 GtkScrolledWindow::stepper-size = 5
+}
+
+style "my-scrollbar"{
+	 GtkScrollbar::stepper-size = 7
+	 GtkScrollbar::slider-width = 7
+}
+
+widget "GtkScrolledWindow" style "my-scrolledwindow"
+class "GtkScrollbar" style "my-scrollbar"
+class "GtkWidget" style "default"
