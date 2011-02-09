@@ -13,11 +13,11 @@
         <website>http://github.com/andypc</website>
     </author>
 
-    <graphics x_win="1186" y_win="33">
+    <graphics x_win="-1" y_win="-1">
         <width>170</width>
         <height>280</height>
     </graphics>
 
-    <setting proxy_on="0" proxy="" proxy_port="" remember_me="1" username="nanni273">
+    <setting proxy_on="0" proxy="" proxy_port="" remember_me="0" username="">
     </setting>
 </vodafone-gadget>
