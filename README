@@ -1,0 +1,33 @@
+
+Linux Vodafone Gadget - Versione 2.0.1 - Desktop Gadget (GTK - Cairo Graphics - C)
+
+Questa applicazione permette di inviare, se dotati di un account Vodafone, 10 SMS e 100 MMS gratis ogni giorno! E' una sorta di riproduzione (con funzionalita' limitate) del widget creato dalla Vodafone per SO Windows.
+
+E' implementato l'utilizzo dell'applicazione con proxy.
+
+Programma complilato con Ubuntu 10.10 32 Bit.
+
+
+ChangeLog
+@2.1.0 (07/02/2011)
+- Cambio grafica gadget
+- Uso delle notifiche del sistema per informare l'utente di errori/invio messaggio
+- Uso della libreria libui_gtk per lo sviluppo dell'interfaccia grafica
+- Revisione/riorganizzazione codice
+
+@2.0.0 (29/05/2010)
+- Codice completamente rinnovato
+- Cambio file di configurazione
+- Cambio logica refresh gadget
+
+@1.5.0 (08/03/2010)
+- Pulizia codice
+- Cambio logica refresh gadget
+- Possibilita' di connettersi tramite proxy
+- Possibilita' di salvare l'ultimo account utilizzato (non la password)
+
+@1.0.0
+- Prima versione
+
+
+
