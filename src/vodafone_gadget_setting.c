@@ -57,7 +57,7 @@ vodafone_gadget_setting_dialog_run (vodafone_gadget_core_s *core)
   color.green = 0;
   color.blue = 0;
 
-  label = libui_gtk_label_new_with_descriptor ("- PROXY -", "sans center bold 9", FALSE, 0, 0, FALSE, NULL);
+  label = libui_gtk_label_new_with_descriptor ("- PROXY -", "sans center bold 9", -1, -1, NULL);
 	gtk_box_pack_start (GTK_BOX(GTK_DIALOG(dialog)->vbox), label, FALSE, FALSE, 5);
 
   /* Proxy h_box */
@@ -72,30 +72,26 @@ vodafone_gadget_setting_dialog_run (vodafone_gadget_core_s *core)
 
     gtk_box_pack_start (GTK_BOX(h_box), check_proxy, FALSE, FALSE, 10);
 	
-    label = libui_gtk_label_new_with_descriptor ("HTTP Proxy:", "sans center 9", FALSE, 0, 0, FALSE, NULL);
+    label = libui_gtk_label_new_with_descriptor ("HTTP Proxy:", "sans center 9", -1, -1, NULL);
     gtk_box_pack_start (GTK_BOX(h_box), label, FALSE, FALSE, 10);
 
 
     entry_proxy = libui_gtk_entry_new (TRUE,
                                        20,
                                        core->proxy,
-                                       TRUE,
                                        200,
                                        20,
-                                       FALSE,
                                        NULL);
     gtk_box_pack_start (GTK_BOX(h_box), entry_proxy, FALSE, FALSE, 10);
 
-    label = libui_gtk_label_new_with_descriptor ("Port", "sans center 9", FALSE, 0, 0, FALSE, NULL);
+    label = libui_gtk_label_new_with_descriptor ("Port", "sans center 9", -1, -1, NULL);
     gtk_box_pack_start (GTK_BOX(h_box), label, FALSE, FALSE, 10);
 
     entry_proxy_port = libui_gtk_entry_new (TRUE,
                                             4,
                                             core->proxy_port,
-                                            TRUE,
                                             50,
                                             20,
-                                            FALSE,
                                             NULL);
 
     gtk_box_pack_start (GTK_BOX(h_box), entry_proxy_port, TRUE, FALSE, 10);
@@ -115,7 +111,7 @@ vodafone_gadget_setting_dialog_run (vodafone_gadget_core_s *core)
 
     gtk_box_pack_start (GTK_BOX(h_box), check_remember, FALSE, FALSE, 10);
 	
-    label = libui_gtk_label_new_with_descriptor ("Ricorda l'ultimo account utilizzato", "sans center 9", FALSE, 0, 0, FALSE, NULL);
+    label = libui_gtk_label_new_with_descriptor ("Ricorda l'ultimo account utilizzato", "sans center 9", -1, -1, NULL);
     gtk_box_pack_start (GTK_BOX(h_box), label, FALSE, FALSE, 10);
 
   gtk_box_pack_start (GTK_BOX(GTK_DIALOG(dialog)->vbox), h_box, FALSE, FALSE, 5);
@@ -129,7 +125,7 @@ vodafone_gadget_setting_dialog_run (vodafone_gadget_core_s *core)
   gtk_box_pack_start (GTK_BOX(GTK_DIALOG(dialog)->vbox), h_box, FALSE, FALSE, 10);
   gtk_widget_show_all (h_box);
 
-  label = libui_gtk_label_new_with_descriptor ("- LEGENDA ERRORI -", "sans center bold 9", FALSE, 0, 0, FALSE, NULL);
+  label = libui_gtk_label_new_with_descriptor ("- LEGENDA ERRORI -", "sans center bold 9", -1, -1, NULL);
   gtk_box_pack_start (GTK_BOX(GTK_DIALOG(dialog)->vbox), label, FALSE, FALSE, 5);
   gtk_widget_show (label);
 
@@ -142,11 +138,11 @@ vodafone_gadget_setting_dialog_run (vodafone_gadget_core_s *core)
   v_box = gtk_vbox_new (FALSE, 0);
 	
 	h_box = gtk_hbox_new (FALSE, 0);
-  label = libui_gtk_label_new_with_descriptor ("Couldn't resolve host\nFailed to connect ()\nWriting recv data to local file\nAuthData non trovato - Riprova", "sans center 9", TRUE, 180, -1, TRUE, &color);
+  label = libui_gtk_label_new_with_descriptor ("Couldn't resolve host\nFailed to connect ()\nWriting recv data to local file\nAuthData non trovato - Riprova", "sans center 9", 180, -1, &color);
     gtk_misc_set_alignment (GTK_MISC(label), 0.0, 0.5);
     gtk_box_pack_start (GTK_BOX(h_box), label, FALSE, FALSE, 10);
 	
-  label = libui_gtk_label_new_with_descriptor ("- connessione internet non attiva\n- problema momentaneo sito Vodafone\n- e' necessario impostare un proxy\n- il proxy impostato non e' corretto", "sans center 9", FALSE, 0, 0, FALSE, NULL);
+  label = libui_gtk_label_new_with_descriptor ("- connessione internet non attiva\n- problema momentaneo sito Vodafone\n- e' necessario impostare un proxy\n- il proxy impostato non e' corretto", "sans center 9", -1, -1, NULL);
   gtk_box_pack_start (GTK_BOX(h_box), label, FALSE, FALSE, 10);
 
   gtk_box_pack_start (GTK_BOX(v_box), h_box, FALSE, FALSE, 5);
@@ -158,11 +154,11 @@ vodafone_gadget_setting_dialog_run (vodafone_gadget_core_s *core)
   gtk_widget_show (separator);
 
   h_box = gtk_hbox_new (FALSE, 0);
-    label = libui_gtk_label_new_with_descriptor ("Timeout operazione - Riprova", "sans center 9", TRUE, 180, 25, TRUE, &color);
+    label = libui_gtk_label_new_with_descriptor ("Timeout operazione - Riprova", "sans center 9", 180, 25, &color);
     gtk_misc_set_alignment (GTK_MISC(label), 0.0, 0.5);
     gtk_box_pack_start (GTK_BOX(h_box), label, FALSE, FALSE, 10);
 	
-   label = libui_gtk_label_new_with_descriptor ("- si e' verificata un'attesa di tempo superiore a 2 minuti in fase connessione o in ricezione dati", "sans center 9", FALSE, 0, 0, FALSE, NULL);
+   label = libui_gtk_label_new_with_descriptor ("- si e' verificata un'attesa di tempo superiore a 2 minuti in fase connessione o in ricezione dati", "sans center 9", -1, -1, NULL);
     gtk_label_set_line_wrap (GTK_LABEL(label), TRUE);
     gtk_label_set_justify (GTK_LABEL(label), GTK_JUSTIFY_LEFT);
 
@@ -177,11 +173,11 @@ vodafone_gadget_setting_dialog_run (vodafone_gadget_core_s *core)
   gtk_widget_show (separator);
 
   h_box = gtk_hbox_new (FALSE, 0);
-    label = libui_gtk_label_new_with_descriptor ("Errore invio - Riprova\nErrore unknown - Riprova", "sans center 9", TRUE, 180, 25, TRUE, &color);
+    label = libui_gtk_label_new_with_descriptor ("Errore invio - Riprova\nErrore unknown - Riprova", "sans center 9", 180, 25, &color);
     gtk_misc_set_alignment (GTK_MISC(label), 0.0, 0.5);
     gtk_box_pack_start (GTK_BOX(h_box), label, FALSE, FALSE, 10);
 	
-   label = libui_gtk_label_new_with_descriptor ("- si e' verificato un errore sconosciuto\n", "sans center 9", FALSE, 0, 0, FALSE, NULL);
+   label = libui_gtk_label_new_with_descriptor ("- si e' verificato un errore sconosciuto\n", "sans center 9", -1, -1, NULL);
     gtk_box_pack_start (GTK_BOX(h_box), label, FALSE, FALSE, 10);
 
   gtk_box_pack_start (GTK_BOX(v_box), h_box, FALSE, FALSE, 5);
@@ -193,11 +189,11 @@ vodafone_gadget_setting_dialog_run (vodafone_gadget_core_s *core)
   gtk_widget_show (separator);
 
   h_box = gtk_hbox_new (FALSE, 0);
-    label = libui_gtk_label_new_with_descriptor ("Testo Vuoto", "sans center 9", TRUE, 180, -1, TRUE, &color);
+    label = libui_gtk_label_new_with_descriptor ("Testo Vuoto", "sans center 9", 180, -1, &color);
   	gtk_misc_set_alignment (GTK_MISC(label), 0.0, 0.5);
     gtk_box_pack_start (GTK_BOX(h_box), label, FALSE, FALSE, 10);
 
-    label = libui_gtk_label_new_with_descriptor ("- non e' possibile inviare sms senza testo", "sans center 9", FALSE, 0, 0, FALSE, NULL);
+    label = libui_gtk_label_new_with_descriptor ("- non e' possibile inviare sms senza testo", "sans center 9", -1, -1, NULL);
     gtk_box_pack_start (GTK_BOX(h_box), label, FALSE, FALSE, 10);
 
 
@@ -210,11 +206,11 @@ vodafone_gadget_setting_dialog_run (vodafone_gadget_core_s *core)
   gtk_widget_show (separator);
 
   h_box = gtk_hbox_new (FALSE, 0);
-    label = libui_gtk_label_new_with_descriptor ("Destinatario non valido\nDestinatario non Vodafone", "sans center 9", TRUE, 180, -1, TRUE, &color);
+    label = libui_gtk_label_new_with_descriptor ("Destinatario non valido\nDestinatario non Vodafone", "sans center 9", 180, -1, &color);
     gtk_misc_set_alignment (GTK_MISC(label), 0.0, 0.5);
     gtk_box_pack_start (GTK_BOX(h_box), label, FALSE, FALSE, 10);
 	
-    label = libui_gtk_label_new_with_descriptor ("- numero del destinatario non esistente / non Vodafone", "sans center 9", FALSE, 0, 0, FALSE, NULL);
+    label = libui_gtk_label_new_with_descriptor ("- numero del destinatario non esistente / non Vodafone", "sans center 9", -1, -1, NULL);
     gtk_label_set_line_wrap (GTK_LABEL(label), TRUE);
     gtk_label_set_justify (GTK_LABEL(label), GTK_JUSTIFY_LEFT);
 
@@ -229,11 +225,11 @@ vodafone_gadget_setting_dialog_run (vodafone_gadget_core_s *core)
   gtk_widget_show (separator);
 
 	h_box = gtk_hbox_new (FALSE, 0);
-    label = libui_gtk_label_new_with_descriptor ("Superata soglia sms disponibili", "sans center 9", TRUE, 180, -1, TRUE, &color);
+    label = libui_gtk_label_new_with_descriptor ("Superata soglia sms disponibili", "sans center 9", 180, -1, &color);
     gtk_misc_set_alignment (GTK_MISC(label), 0.0, 0.5);
     gtk_box_pack_start (GTK_BOX(h_box), label, FALSE, FALSE, 10);
 
-    label = libui_gtk_label_new_with_descriptor ("- attualmente e' possibile inviare fino ad un  massimo di 10 sms gratis al giorno", "sans center 9", FALSE, 0, 0, FALSE, NULL);
+    label = libui_gtk_label_new_with_descriptor ("- attualmente e' possibile inviare fino ad un  massimo di 10 sms gratis al giorno", "sans center 9", -1, -1, NULL);
     gtk_label_set_line_wrap (GTK_LABEL(label), TRUE);
     gtk_label_set_justify (GTK_LABEL(label), GTK_JUSTIFY_LEFT);
 
@@ -248,11 +244,11 @@ vodafone_gadget_setting_dialog_run (vodafone_gadget_core_s *core)
   gtk_widget_show (separator);
 
 	h_box = gtk_hbox_new (FALSE, 0);
-    label = libui_gtk_label_new_with_descriptor ("Init curl non riuscita", "sans center 9", TRUE, 180, 25, TRUE, &color);
+    label = libui_gtk_label_new_with_descriptor ("Init curl non riuscita", "sans center 9", 180, 25, &color);
     gtk_misc_set_alignment (GTK_MISC(label), 0.0, 0.5);
     gtk_box_pack_start (GTK_BOX(h_box), label, FALSE, FALSE, 10);
 
-    label = libui_gtk_label_new_with_descriptor ("- non e' stato possibile inizializzare libCURL", "sans center 9", FALSE, 0, 0, FALSE, NULL);
+    label = libui_gtk_label_new_with_descriptor ("- non e' stato possibile inizializzare libCURL", "sans center 9", -1, -1, NULL);
     gtk_box_pack_start (GTK_BOX(h_box), label, FALSE, FALSE, 10);
 
   gtk_box_pack_start (GTK_BOX(v_box), h_box, FALSE, FALSE, 5);
@@ -264,11 +260,11 @@ vodafone_gadget_setting_dialog_run (vodafone_gadget_core_s *core)
   gtk_widget_show (separator);
 
 	h_box = gtk_hbox_new (FALSE, 0);
-    label = libui_gtk_label_new_with_descriptor ("Autenticazione fallita", "sans center 9", TRUE, 180, 25, TRUE, &color);
+    label = libui_gtk_label_new_with_descriptor ("Autenticazione fallita", "sans center 9", 180, 25, &color);
     gtk_misc_set_alignment (GTK_MISC(label), 0.0, 0.5);
     gtk_box_pack_start (GTK_BOX(h_box), label, FALSE, FALSE, 10);
 
-    label = libui_gtk_label_new_with_descriptor ("- account/password non validi", "sans center 9", FALSE, 0, 0, FALSE, NULL);
+    label = libui_gtk_label_new_with_descriptor ("- account/password non validi", "sans center 9", -1, -1, NULL);
     gtk_box_pack_start (GTK_BOX(h_box), label, FALSE, FALSE, 10);
 
   gtk_box_pack_start (GTK_BOX(v_box), h_box, FALSE, FALSE, 5);
@@ -280,11 +276,11 @@ vodafone_gadget_setting_dialog_run (vodafone_gadget_core_s *core)
   gtk_widget_show (separator);
 
 	h_box = gtk_hbox_new (FALSE, 0);
-    label = libui_gtk_label_new_with_descriptor ("Captcha sbagliato - Riprova", "sans center 9", TRUE, 180, 25, TRUE, &color);
+    label = libui_gtk_label_new_with_descriptor ("Captcha sbagliato - Riprova", "sans center 9", 180, 25, &color);
     gtk_misc_set_alignment (GTK_MISC(label), 0.0, 0.5);
     gtk_box_pack_start (GTK_BOX(h_box), label, FALSE, FALSE, 10);
 
-    label = libui_gtk_label_new_with_descriptor ("- il codice captcha inserito non e' corretto", "sans center 9", FALSE, 0, 0, FALSE, NULL);
+    label = libui_gtk_label_new_with_descriptor ("- il codice captcha inserito non e' corretto", "sans center 9", -1, -1, NULL);
     gtk_box_pack_start (GTK_BOX(h_box), label, FALSE, FALSE, 10);
 
   gtk_box_pack_start (GTK_BOX(v_box), h_box, FALSE, FALSE, 5);
@@ -296,11 +292,11 @@ vodafone_gadget_setting_dialog_run (vodafone_gadget_core_s *core)
   gtk_widget_show (separator);
 
   h_box = gtk_hbox_new (FALSE, 0);
-    label = libui_gtk_label_new_with_descriptor ("Servizio non disponibile causa\nlavori manutenzione", "sans center 9", TRUE, 180, 25, TRUE, &color);
+    label = libui_gtk_label_new_with_descriptor ("Servizio non disponibile causa\nlavori manutenzione", "sans center 9", 180, 25, &color);
     gtk_misc_set_alignment (GTK_MISC(label), 0.0, 0.5);
     gtk_box_pack_start (GTK_BOX(h_box), label, FALSE, FALSE, 10);
 
-    label = libui_gtk_label_new_with_descriptor ("- Il sito e' chiuso per manutenzione\n", "sans center 9", FALSE, 0, 0, FALSE, NULL);
+    label = libui_gtk_label_new_with_descriptor ("- Il sito e' chiuso per manutenzione\n", "sans center 9", -1, -1, NULL);
     gtk_box_pack_start (GTK_BOX(h_box), label, FALSE, FALSE, 10);
 
   gtk_box_pack_start (GTK_BOX(v_box), h_box, FALSE, FALSE, 5);
@@ -313,7 +309,7 @@ vodafone_gadget_setting_dialog_run (vodafone_gadget_core_s *core)
   gtk_widget_show (scroll);
 	
   h_box = gtk_hbox_new (FALSE, 0);
-    label = libui_gtk_label_new_with_descriptor ("NB: l'applicazione sfrutta il servizio online offerto dalla Vodafone - possono essere frequenti errori nell'invio di messaggi, in particolare degli mms. Il sovraccarico del server puo' causare lentezza!", "sans 9", TRUE, 500, -1, FALSE, NULL);
+    label = libui_gtk_label_new_with_descriptor ("NB: l'applicazione sfrutta il servizio online offerto dalla Vodafone - possono essere frequenti errori nell'invio di messaggi, in particolare degli mms. Il sovraccarico del server puo' causare lentezza!", "sans 9", 500, -1, NULL);
     gtk_label_set_line_wrap (GTK_LABEL(label), TRUE);
     gtk_label_set_justify (GTK_LABEL(label), GTK_JUSTIFY_FILL);
     gtk_label_set_line_wrap_mode (GTK_LABEL(label), PANGO_WRAP_WORD_CHAR);

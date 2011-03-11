@@ -29,7 +29,7 @@ GtkWidget *label;
 GError *error = NULL;
 GdkColor color;
 
-extern void vodafone_gadget_about (vodafone_gadget_core_s *core);
+extern void vodafone_gadget_about (GtkMenuItem *menuitem, gpointer user_data);
 
 /*
   Show or hide the gadget keeping it alive
@@ -121,16 +121,16 @@ int
 main (int argc, char *argv[])
 {
   /* Init */
-	g_thread_init (NULL);
-	gdk_threads_init ();
-	gtk_init (&argc, &argv);	
+  g_thread_init (NULL);
+  gdk_threads_init ();
+  gtk_init (&argc, &argv);	
 
   /* Create app's data structure */
-	vodafone_gadget_core_s *core;
-	core = g_new0 (vodafone_gadget_core_s, 1);
+  vodafone_gadget_core_s *core;
+  core = g_new0 (vodafone_gadget_core_s, 1);
 
   /* Set app's name */
-	g_set_application_name ("vodafone-gadget");
+  g_set_application_name ("vodafone-gadget");
 
   /* Print app's header */
   g_print ("\n* LINUX VODAFONE GADGET\n");
@@ -140,9 +140,7 @@ main (int argc, char *argv[])
 	
   /* Parse the XML conf. file */
   if ((vodafone_gadget_xml_parse (core, XML_FILE, TRUE, TRUE, TRUE, TRUE) == -1) || (core->width == -1) || (core->height == -1))
-  {
     libui_gtk_dialog_error ("Impossibilie avviare l'applicazione\n. XML file missing!");
-	}
 
 	/* Style widget */
 	gtk_rc_parse (g_strdup_printf(STYLE));
@@ -156,17 +154,17 @@ main (int argc, char *argv[])
                                               TRUE,
                                               TRUE,
                                               FALSE,
-                                              GDK_WINDOW_TYPE_HINT_DOCK);
+                                              GDK_WINDOW_TYPE_HINT_DOCK,
+                                              TRUE);
 
 	/* Create gadget's icon */
   core->icon = (GtkWidget *) libui_gtk_gadget_window_icon_new (core->window,
                                                                IMAGE_LOGO,
-                                                               "Vodafone Gadget 2.0");
+                                                               "Vodafone Gadget 2.1.0");
 
 	/* Create button close */
-  core->button_close = libgadget_button_new_with_image (FALSE,
-                                                        0,
-                                                        0,
+  core->button_close = libgadget_button_new_with_image (-1,
+                                                        -1,
                                                         TRUE,
                                                         7,
                                                         7,
@@ -174,9 +172,8 @@ main (int argc, char *argv[])
                                                         IMAGE_CLOSE);
 
 	/* Create button setting */
-  core->button_setting = libgadget_button_new_with_image (FALSE,
-                                                          0,
-                                                          0,
+  core->button_setting = libgadget_button_new_with_image (-1,
+                                                          -1,
                                                           TRUE,
                                                           7,
                                                           7,
@@ -184,9 +181,8 @@ main (int argc, char *argv[])
                                                           IMAGE_SETTING);
 
 	/* Create button move */
-  core->button_move = libgadget_button_new_with_image (FALSE,
-                                                       0,
-                                                       0,
+  core->button_move = libgadget_button_new_with_image (-1,
+                                                       -1,
                                                        TRUE,
                                                        7,
                                                        7,
@@ -203,7 +199,7 @@ main (int argc, char *argv[])
   }
   else
     gtk_widget_set_uposition (GTK_WIDGET(core->window), core->x_window, core->y_window);
-	
+
   /* Create fixed area */	
   core->fixed = gtk_fixed_new ();
 
@@ -237,7 +233,7 @@ main (int argc, char *argv[])
 
 	/* Signals */
 	gtk_signal_connect (GTK_OBJECT(core->quit_item), "activate", G_CALLBACK (vodafone_gadget_quit_menu), core);
-	gtk_signal_connect (GTK_OBJECT(core->about_item), "activate", G_CALLBACK (vodafone_gadget_about), core);
+	gtk_signal_connect (GTK_OBJECT(core->about_item), "activate", G_CALLBACK (vodafone_gadget_about), NULL);
 	g_signal_connect (core->icon, "popup-menu",G_CALLBACK (icon_popup_menu), core->icon_menu);
   g_signal_connect (G_OBJECT(core->window), "expose-event", G_CALLBACK (on_expose_event), core);
   g_signal_connect (G_OBJECT(core->window), "destroy", G_CALLBACK (vodafone_gadget_quit), core);

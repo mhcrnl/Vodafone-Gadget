@@ -20,30 +20,12 @@
  * Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-
-#include "vodafone_gadget.h"
-
+#ifndef LIBUI_GTK_DIALOG_ERROR_H_
+#define LIBUI_GTK_DIALOG_ERROR_H_
 
 /*
-  Create and run dialog setting
+  Create dialog error
 */
-void
-vodafone_gadget_about (GtkMenuItem *menuitem, gpointer user_data)
-{
-  gchar *authors[] = {"Andrea Costa <nukemup@hotmail.com>", NULL};
-	gchar* comments = {"Linux Vodafone SMS MMS gadget"};
-	gchar* copyright = {"GPL General Public License"};
-	gchar* website = "http://github.com/andypc";
+void libui_gtk_dialog_error (gchar *error)
 
-  gtk_show_about_dialog (NULL,
-                         "logo", libui_gtk_image_create_pixbuf_from_file (IMAGE_LOGO),
-                         "program-name", "Linux Vodafone Gadget",
-                         "authors", authors,
-                         "version", VERSION,
-                         "comments", comments,
-                         "copyright", copyright,
-                         "website", website,
-                         NULL);
-
-}
-
+#endif /* LIBUI_GTK_DIALOG_ERROR_H_ */

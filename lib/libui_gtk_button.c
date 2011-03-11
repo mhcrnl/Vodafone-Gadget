@@ -28,8 +28,7 @@
   Creates image button
 */
 GtkWidget*
-libgadget_button_new_with_image (gboolean change_button_size,
-                                 int width_button,
+libgadget_button_new_with_image (int width_button,
                                  int height_button,
                                  gboolean change_image_size,
                                  int width_image,
@@ -42,9 +41,8 @@ libgadget_button_new_with_image (gboolean change_button_size,
 	
 	widget = gtk_button_new ();
 
-	if (change_button_size == TRUE)
-		/* Set button's sizes */
-		gtk_widget_set_size_request (widget, width_button, height_button);
+	/* Set button's sizes */
+	gtk_widget_set_size_request (widget, width_button, height_button);
 	
 	if (change_image_size == FALSE)
 		/* Keep original image sizes */
@@ -69,15 +67,14 @@ libgadget_button_new_with_image (gboolean change_button_size,
 /*
   Creates label button
 */
-GtkWidget* libgadget_button_new_with_label (char *label, gboolean change_button_size, int width_button, int height_button, char *descriptor)
+GtkWidget* libgadget_button_new_with_label (char *label, int width_button, int height_button, char *descriptor)
 {
 	GtkWidget *widget;
 	
 	widget = gtk_button_new_with_label (label);
 
-	if (change_button_size == TRUE)
-		/* Set button's sizes */
-		gtk_widget_set_size_request (widget, width_button, height_button);
+	/* Set button's sizes */
+	gtk_widget_set_size_request (widget, width_button, height_button);
 
 	if (descriptor != NULL)
 		/* Set font */

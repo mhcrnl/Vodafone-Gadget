@@ -28,11 +28,9 @@
 #include <stdio.h>
 #include <string.h>
 #include <unistd.h>
-#include <math.h>
 #include "ephy-spinner.h"
 #include "vodafone_gadget_errors.h"
 
-#define DATA_FILE "data.txt"
 #define IMAGE_CLOSE "images/close.png"
 #define IMAGE_MOVE "images/move.png"
 #define IMAGE_SETTING "images/setting.png"

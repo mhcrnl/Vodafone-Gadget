@@ -30,10 +30,8 @@
 GtkWidget* libui_gtk_entry_new (gboolean set_max_size,
                                 int max_size,
                                 char *text,
-                                gboolean change_size,
                                 int width_entry,
                                 int height_entry,
-                                gboolean change_color,
                                 GdkColor *color)
 {
   GtkWidget *widget;
@@ -44,11 +42,10 @@ GtkWidget* libui_gtk_entry_new (gboolean set_max_size,
   if (text != NULL)
 		gtk_entry_set_text (GTK_ENTRY(widget), text);
 
-  if (change_size == TRUE)
-    /* Set label's sizes */
-    gtk_widget_set_size_request (widget, width_entry, height_entry);
+  /* Set label's sizes */
+  gtk_widget_set_size_request (widget, width_entry, height_entry);
 
-  if (change_color == TRUE)
+  if (color != NULL)
     /* Set text color */
     gtk_widget_modify_fg (widget, GTK_STATE_NORMAL, color);
 
@@ -59,16 +56,15 @@ GtkWidget* libui_gtk_entry_new (gboolean set_max_size,
 /*
   Creates entry using a descriptor
 */
-GtkWidget* libui_gtk_entry_new_with_descriptor (gboolean set_max_size, int max_size, char *text, char *descriptor, gboolean change_size, int width_entry, int height_entry, gboolean change_text_color, GdkColor *color)
+GtkWidget* libui_gtk_entry_new_with_descriptor (gboolean set_max_size, int max_size, char *text, char *descriptor, int width_entry, int height_entry, GdkColor *color)
 {
   GtkWidget *widget;
 
   if (set_max_size == TRUE)
     widget = gtk_entry_new_with_max_length (max_size);
-	
-  if (change_size == TRUE)
-    /* Set label's sizes */
-    gtk_widget_set_size_request (widget, width_entry, height_entry);
+
+  /* Set label's sizes */
+  gtk_widget_set_size_request (widget, width_entry, height_entry);
 
   if (text != NULL)
 		gtk_entry_set_text (GTK_ENTRY(widget), text);
@@ -76,7 +72,7 @@ GtkWidget* libui_gtk_entry_new_with_descriptor (gboolean set_max_size, int max_s
   if (descriptor != NULL)
     gtk_widget_modify_font (widget, pango_font_description_from_string (descriptor));
 
-  if (change_text_color == TRUE)
+  if (color != NULL)
     /* Set text color */
     gtk_widget_modify_fg (widget, GTK_STATE_NORMAL, color);
 	

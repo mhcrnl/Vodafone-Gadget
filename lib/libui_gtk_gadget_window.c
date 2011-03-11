@@ -46,7 +46,8 @@ libui_gtk_gadget_window_new (int width,
                              gboolean stick,
                              gboolean keep_below,
                              gboolean set_modal,
-                             GdkWindowTypeHint hint
+                             GdkWindowTypeHint hint,
+                             gboolean transparent
 )
 {
   GtkWidget *widget;
@@ -64,7 +65,8 @@ libui_gtk_gadget_window_new (int width,
 	gtk_window_set_modal (GTK_WINDOW(widget), set_modal);
 	gtk_window_set_type_hint (GTK_WINDOW(widget), hint);
 
-  on_alpha_screen_changed (widget, NULL, NULL);
+  if (transparent == TRUE)
+    on_alpha_screen_changed (widget, NULL, NULL);
 
 	return widget;
 }

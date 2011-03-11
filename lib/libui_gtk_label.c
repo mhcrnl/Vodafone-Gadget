@@ -32,11 +32,10 @@ GtkWidget* libui_gtk_label_new (char *text, gboolean change_size, int width_labe
   GtkWidget *widget;
   widget = gtk_label_new (text);
 
-  if (change_size == TRUE)
-    /* Set label's sizes */
-    gtk_widget_set_size_request (widget, width_label, height_label);
+  /* Set label's sizes */
+  gtk_widget_set_size_request (widget, width_label, height_label);
 
-  if (change_color == TRUE)
+  if (color != NULL)
     /* Set text color */
     gtk_widget_modify_fg (widget, GTK_STATE_NORMAL, color);
 
@@ -47,7 +46,7 @@ GtkWidget* libui_gtk_label_new (char *text, gboolean change_size, int width_labe
 /*
   Creates label using a descriptor
 */
-GtkWidget* libui_gtk_label_new_with_descriptor (char *text, char *descriptor, gboolean change_label_size, int width_label, int height_label, gboolean change_text_color, GdkColor *color)
+GtkWidget* libui_gtk_label_new_with_descriptor (char *text, char *descriptor, int width_label, int height_label, GdkColor *color)
 {
   GtkWidget *widget;
   widget = gtk_label_new (text);
@@ -55,11 +54,10 @@ GtkWidget* libui_gtk_label_new_with_descriptor (char *text, char *descriptor, gb
   /* Modify font */
   gtk_widget_modify_font (widget, pango_font_description_from_string (descriptor));
 	
-  if (change_label_size == TRUE)
-    /* Set label's sizes */
-    gtk_widget_set_size_request (widget, width_label, height_label);
+  /* Set label's sizes */
+  gtk_widget_set_size_request (widget, width_label, height_label);
 
-  if (change_text_color == TRUE)
+  if (color != NULL)
     /* Set text color */
     gtk_widget_modify_fg (widget, GTK_STATE_NORMAL, color);
 	

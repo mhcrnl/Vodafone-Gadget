@@ -126,8 +126,6 @@ vodafone_gadget_send_thread_send (vodafone_gadget_core_s *core)
 
       /* Notify message */
       vodafone_gadget_notify (TRUE, "Messaggio inviato correttamente.");
-
-      vodafone_gadget_notify (TRUE, NULL);
     }
     else
     {
@@ -283,10 +281,8 @@ vodafone_gadget_func_create_logged_v_box (vodafone_gadget_core_s *core)
                                                                              19,
                                                                              "Oggetto",
                                                                              "sans 9",
-                                                                             TRUE,
                                                                              130,
                                                                              17,
-                                                                             FALSE,
                                                                              NULL);
 
 		gtk_box_pack_start (GTK_BOX(h_box), core->entry_subject, TRUE, FALSE, 0);
@@ -300,10 +296,8 @@ vodafone_gadget_func_create_logged_v_box (vodafone_gadget_core_s *core)
                                                                                     15,
                                                                                     "Destinatario",
                                                                                     "sans 9",
-                                                                                    TRUE,
                                                                                     130,
                                                                                     17,
-                                                                                    FALSE,
                                                                                     NULL);
 
 		gtk_box_pack_start (GTK_BOX(h_box), core->entry_mobile_number, TRUE, FALSE, 0);
@@ -377,7 +371,7 @@ vodafone_gadget_func_create_logged_v_box (vodafone_gadget_core_s *core)
 	
 	/* Button send */
 	h_box = gtk_hbox_new (FALSE, 0);
-    core->button_send = libgadget_button_new_with_label ("Invia", TRUE, 80, 20, NULL);
+    core->button_send = libgadget_button_new_with_label ("Invia", 80, 20, NULL);
 		gtk_box_pack_start (GTK_BOX(h_box), core->button_send, TRUE, FALSE, 0);
 		gtk_widget_show (core->button_send);
 	gtk_box_pack_start (GTK_BOX(core->logged_vbox), h_box, FALSE, FALSE, 5);
@@ -385,7 +379,7 @@ vodafone_gadget_func_create_logged_v_box (vodafone_gadget_core_s *core)
 	
 
 
-  core->label_notify = libui_gtk_label_new_with_descriptor ("", "sans 7", FALSE, 0, 0, FALSE, NULL);
+  core->label_notify = libui_gtk_label_new_with_descriptor ("", "sans 7", -1, -1, NULL);
 	gtk_widget_show (core->label_notify);
 	gtk_box_pack_start (GTK_BOX(core->logged_vbox), core->label_notify, FALSE, FALSE, 1);
 
@@ -503,7 +497,7 @@ vodafone_gadget_func_create_init_v_box (vodafone_gadget_core_s *core)
   color.blue  = 0;
 
   /* Title label */
-  label = (GtkWidget *) libui_gtk_label_new_with_descriptor ("Linux Vodafone Gadget", "sans 10", FALSE, 0, 0, TRUE, &color);
+  label = (GtkWidget *) libui_gtk_label_new_with_descriptor ("Linux Vodafone Gadget", "sans 10", -1, -1, &color);
   gtk_box_pack_start (GTK_BOX(core->init_vbox), label, FALSE, FALSE, 10);
   gtk_widget_show (label);
 
@@ -522,14 +516,14 @@ vodafone_gadget_func_create_init_v_box (vodafone_gadget_core_s *core)
   gtk_widget_show (separator);
 
   /* Username label */
-  label = (GtkWidget *) libui_gtk_label_new_with_descriptor ("username:", "sans 9", FALSE, 0, 0, TRUE, &color);
+  label = (GtkWidget *) libui_gtk_label_new_with_descriptor ("username:", "sans 9", -1, -1, &color);
   gtk_box_pack_start (GTK_BOX(core->init_vbox), label, FALSE, FALSE, 3);
   gtk_widget_show (label);
 
   /* Username entry - Max 20 char */
   h_box = gtk_hbox_new (FALSE, 0);
 
-    core->entry_account = (GtkWidget *) libui_gtk_entry_new_with_descriptor (TRUE, 20, "", "sans 9", TRUE, 130, 17, FALSE, NULL);
+    core->entry_account = (GtkWidget *) libui_gtk_entry_new_with_descriptor (TRUE, 20, "", "sans 9", 130, 17, NULL);
 
     if (core->remember_me == 1)
       gtk_entry_set_text (GTK_ENTRY(core->entry_account), g_strdup_printf ("%s", core->account));
@@ -540,14 +534,14 @@ vodafone_gadget_func_create_init_v_box (vodafone_gadget_core_s *core)
   gtk_widget_show (h_box);
 
   /* Password label */
-  label = (GtkWidget *) libui_gtk_label_new_with_descriptor ("password:", "sans 9", FALSE, 0, 0, TRUE, &color);
+  label = (GtkWidget *) libui_gtk_label_new_with_descriptor ("password:", "sans 9", -1, -1, &color);
   gtk_box_pack_start (GTK_BOX(core->init_vbox), label, FALSE, FALSE, 3);
   gtk_widget_show (label);
 
   /* Password entry */
   h_box = gtk_hbox_new (FALSE, 0);
 
-    core->entry_password = (GtkWidget *) libui_gtk_entry_new_with_descriptor (TRUE, 20, "", "sans 9", TRUE, 130, 17, FALSE, NULL);
+    core->entry_password = (GtkWidget *) libui_gtk_entry_new_with_descriptor (TRUE, 20, "", "sans 9", 130, 17, NULL);
     gtk_entry_set_visibility (GTK_ENTRY (core->entry_password), FALSE);
     gtk_entry_set_invisible_char (GTK_ENTRY (core->entry_password), '*');
     gtk_box_pack_start (GTK_BOX(h_box), core->entry_password, TRUE, FALSE, 0);
@@ -557,7 +551,7 @@ vodafone_gadget_func_create_init_v_box (vodafone_gadget_core_s *core)
 
   /* Login button */
   h_box = gtk_hbox_new (FALSE, 0);
-    core->button_login = (GtkWidget*) libgadget_button_new_with_label ("Log in", TRUE, 80, 20, NULL);
+    core->button_login = (GtkWidget*) libgadget_button_new_with_label ("Log in", 80, 20, NULL);
     gtk_box_pack_start (GTK_BOX(h_box), core->button_login, TRUE, FALSE, 0);
     gtk_widget_show (core->button_login);
   gtk_widget_show (h_box);
@@ -566,10 +560,8 @@ vodafone_gadget_func_create_init_v_box (vodafone_gadget_core_s *core)
   /* Error label */
   core->label_error = (GtkWidget *) libui_gtk_label_new_with_descriptor ("",
                                                                          "sans center bold 6",
-                                                                         TRUE,
                                                                          135,
                                                                          20,
-                                                                         TRUE,
                                                                          &color);
 
   gtk_box_pack_start (GTK_BOX(core->init_vbox), core->label_error, FALSE, FALSE, 0);

@@ -38,7 +38,8 @@ libui_gtk_dialog_error (char *error)
                                   GTK_BUTTONS_OK,
                                   "Error", NULL);
 
-  gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG(dialog), error);
+  gtk_message_dialog_format_secondary_markup (GTK_MESSAGE_DIALOG (dialog),
+                                              "%s", error);
 
   gtk_dialog_run (GTK_DIALOG (dialog));
   gtk_widget_destroy (dialog);

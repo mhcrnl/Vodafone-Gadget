@@ -20,30 +20,17 @@
  * Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-
-#include "vodafone_gadget.h"
-
+#ifndef LIBUI_GTK_IMAGE_H_
+#define LIBUI_GTK_IMAGE_H_
 
 /*
-  Create and run dialog setting
+ Creates a GdkPixbuf from a file
 */
-void
-vodafone_gadget_about (GtkMenuItem *menuitem, gpointer user_data)
-{
-  gchar *authors[] = {"Andrea Costa <nukemup@hotmail.com>", NULL};
-	gchar* comments = {"Linux Vodafone SMS MMS gadget"};
-	gchar* copyright = {"GPL General Public License"};
-	gchar* website = "http://github.com/andypc";
+GdkPixbuf *libui_gtk_image_create_pixbuf_from_file (const gchar * filename);
 
-  gtk_show_about_dialog (NULL,
-                         "logo", libui_gtk_image_create_pixbuf_from_file (IMAGE_LOGO),
-                         "program-name", "Linux Vodafone Gadget",
-                         "authors", authors,
-                         "version", VERSION,
-                         "comments", comments,
-                         "copyright", copyright,
-                         "website", website,
-                         NULL);
+/*
+  Creates a GdkPixbuf from a file. Size required!
+*/
+GdkPixbuf *libui_gtk_image_create_pixbuf_from_file_with_size (const gchar * filename, int width, int height);
 
-}
-
+#endif /* LIBUI_GTK_IMAGE_H_ */
